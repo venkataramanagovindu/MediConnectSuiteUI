@@ -58,6 +58,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Header(props) {
   const { toggleSideNav } = props;
+  const healthId = "634558";
   const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -99,6 +100,7 @@ export default function Header(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
+      <MenuItem onClick={handleMenuClose}>My Health ID: {healthId}</MenuItem>
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
@@ -167,7 +169,6 @@ export default function Header(props) {
             aria-label="open drawer"
             sx={{ mr: 2 }}
             onClick={() => {
-              console.log(toggleSideNav);
               toggleSideNav(open);
               setOpen(!open);
             }}

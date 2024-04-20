@@ -4,12 +4,11 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import Header from "./pages/Header";
-import Appointments from "./pages/Appointments";
 import History from "./pages/History";
-import SignIn from "./pages/Auth/SignIn";
-import SignUp from "./pages/Auth/SignUp";
+import AppRoutes from "./pages/AppRoutes";
 import SideNav from "./pages/SideNav";
 import { useRef, useEffect, useState } from "react";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   const sideNavRef = useRef(null);
@@ -24,9 +23,12 @@ function App() {
       <Header toggleSideNav={toggleSideNav} />
       <SideNav ref={sideNavRef} />
       <div className="m-5">{/* <Appointments /> */}</div>
-      <div className="m-5">
-        <History />
-      </div>
+      <div className="m-5">{/* <History /> */}</div>
+      <BrowserRouter>
+        <div className="m-5">
+          <AppRoutes />
+        </div>
+      </BrowserRouter>
     </div>
   );
 

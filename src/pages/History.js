@@ -3,38 +3,31 @@ import { DataGrid } from "@mui/x-data-grid";
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
-  { field: "patientName", headerName: "Patient Name", width: 200 },
   { field: "doctorName", headerName: "Doctor Name", width: 200 },
   {
     field: "appointmentDate",
     headerName: "Appointment Date",
     width: 150,
-    // type: "date",
   },
   {
     field: "treatment",
     headerName: "Treatment",
     width: 200,
-    // additional options or renderCell can be added here if needed
   },
   {
     field: "diagnosis",
     headerName: "Diagnosis",
     width: 200,
-    // additional options or renderCell can be added here if needed
   },
   {
     field: "nextAppointment",
     headerName: "Next Appointment",
     width: 150,
-    // type: "date",
-    // additional options or renderCell can be added here if needed
   },
   {
     field: "notes",
     headerName: "Notes",
     width: 300,
-    // additional options or renderCell can be added here if needed
   },
   {
     field: "status",
@@ -65,7 +58,6 @@ const columns = [
 const rows = [
   {
     id: 1,
-    patientName: "John Doe",
     doctorName: "Dr. Smith",
     appointmentDate: "2024-04-18",
     treatment: "Physiotherapy",
@@ -76,7 +68,6 @@ const rows = [
   },
   {
     id: 2,
-    patientName: "Jane Roe",
     doctorName: "Dr. Jones",
     appointmentDate: "2024-04-15",
     treatment: "General Checkup",
@@ -87,7 +78,6 @@ const rows = [
   },
   {
     id: 3,
-    patientName: "Alice Brown",
     doctorName: "Dr. Green",
     appointmentDate: "2024-04-10",
     treatment: "Dental Cleaning",
@@ -98,7 +88,6 @@ const rows = [
   },
   {
     id: 4,
-    patientName: "Bob White",
     doctorName: "Dr. Black",
     appointmentDate: "2024-03-22",
     treatment: "Vaccination",
@@ -109,7 +98,6 @@ const rows = [
   },
   {
     id: 5,
-    patientName: "Clara Gray",
     doctorName: "Dr. Blue",
     appointmentDate: "2024-04-05",
     treatment: "Orthopedic Consultation",
@@ -120,7 +108,6 @@ const rows = [
   },
   {
     id: 1,
-    patientName: "John Doe",
     doctorName: "Dr. Smith",
     appointmentDate: "2024-04-18",
     treatment: "Physiotherapy",
@@ -131,7 +118,6 @@ const rows = [
   },
   {
     id: 2,
-    patientName: "Jane Roe",
     doctorName: "Dr. Jones",
     appointmentDate: "2024-04-15",
     treatment: "General Checkup",
@@ -142,7 +128,6 @@ const rows = [
   },
   {
     id: 3,
-    patientName: "Alice Brown",
     doctorName: "Dr. Green",
     appointmentDate: "2024-04-10",
     treatment: "Dental Cleaning",
@@ -153,7 +138,6 @@ const rows = [
   },
   {
     id: 4,
-    patientName: "Bob White",
     doctorName: "Dr. Black",
     appointmentDate: "2024-03-22",
     treatment: "Vaccination",
@@ -164,7 +148,6 @@ const rows = [
   },
   {
     id: 5,
-    patientName: "Clara Gray",
     doctorName: "Dr. Blue",
     appointmentDate: "2024-04-05",
     treatment: "Orthopedic Consultation",
@@ -178,7 +161,7 @@ const rows = [
 export default function History() {
   return (
     <div>
-      <h3>Appointments</h3>
+      <h3>History</h3>
       <DataGrid
         rows={rows}
         columns={columns}
