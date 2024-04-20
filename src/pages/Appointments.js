@@ -231,7 +231,13 @@ export default function Appointments() {
             {metrics.map((m) => (
               <div
                 className="card d-flex flex-column col-4 border p-3"
-                style={{ backgroundColor: m.color }}
+                style={{
+                  backgroundColor: m.color,
+                  backgroundImage: `url(${
+                    process.env.PUBLIC_URL + "/assets/imgs/dna.png"
+                  })`,
+                  backgroundRepeat: "no-repeat",
+                }}
               >
                 <span>
                   <img
