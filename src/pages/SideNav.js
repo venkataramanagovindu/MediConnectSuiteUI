@@ -10,6 +10,21 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
+import HistoryIcon from "@mui/icons-material/History";
+
+const navItems = [
+  {
+    name: "Appointments",
+  },
+  {
+    name: "Vitals",
+  },
+  {
+    name: "History",
+  },
+];
 
 const SideNav = React.forwardRef((props, ref) => {
   const [isDrawerOpened, setIsDrawerOpened] = React.useState(false);
@@ -25,13 +40,15 @@ const SideNav = React.forwardRef((props, ref) => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {navItems.map((navItem, index) => (
+          <ListItem key={navItem} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {navItem.name == "Appointments" && <CalendarMonthIcon />}
+                {navItem.name == "Vitals" && <HealthAndSafetyIcon />}
+                {navItem.name == "History" && <HistoryIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={navItem.name} />
             </ListItemButton>
           </ListItem>
         ))}

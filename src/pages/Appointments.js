@@ -233,10 +233,10 @@ export default function Appointments() {
                 className="card d-flex flex-column col-4 border p-3"
                 style={{
                   backgroundColor: m.color,
-                  backgroundImage: `url(${
-                    process.env.PUBLIC_URL + "/assets/imgs/dna.png"
-                  })`,
-                  backgroundRepeat: "no-repeat",
+                  // backgroundImage: `url(${process.env.PUBLIC_URL}/assets/imgs/dna.png)`,
+                  // backgroundRepeat: "no-repeat",
+                  // backgroundSize: "cover", // or a specific size like "100px 100px"
+                  // backgroundPosition: "center", // Adjust if needed
                 }}
               >
                 <span>

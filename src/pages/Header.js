@@ -180,7 +180,7 @@ export default function Header(props) {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            Medi Connect Suite
+            Medi Connect
           </Typography>
           <Search>
             <SearchIconWrapper>
