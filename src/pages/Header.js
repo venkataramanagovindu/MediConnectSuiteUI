@@ -56,7 +56,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Header() {
+export default function Header(props) {
+  const { toggleSideNav } = props;
+  const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -164,6 +166,11 @@ export default function Header() {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            onClick={() => {
+              console.log(toggleSideNav);
+              toggleSideNav(open);
+              setOpen(!open);
+            }}
           >
             <MenuIcon />
           </IconButton>
