@@ -627,7 +627,7 @@ function Vitals() {
 
   return (
     <div>
-      <h3>Health Records</h3>
+      <h3>Vitals & Reports</h3>
       <div class="vitalcard-container">
         <div class="vitalcard vitalcard-temperature">
           <img src="/assets/imgs/tempremov.png" width={50} height={50} />

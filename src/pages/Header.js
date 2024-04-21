@@ -38,7 +38,7 @@ const navItems = [
     link: "appointments",
   },
   {
-    name: "Vitals",
+    name: "Vitals & Reports",
     link: "vitals",
   },
   {
@@ -351,7 +351,9 @@ export default function PersistentDrawerLeft() {
                   <ListItemButton>
                     <ListItemIcon>
                       {navItem.name == "Appointments" && <CalendarMonthIcon />}
-                      {navItem.name == "Vitals" && <HealthAndSafetyIcon />}
+                      {navItem.name == "Vitals & Reports" && (
+                        <HealthAndSafetyIcon />
+                      )}
                       {navItem.name == "History" && <HistoryIcon />}
                     </ListItemIcon>
                     <ListItemText primary={navItem.name} />

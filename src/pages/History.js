@@ -340,6 +340,7 @@ export default function History() {
                 value={date}
                 onChange={setDate}
                 required
+                minutesStep={1}
               />
             </LocalizationProvider>
           </div>
