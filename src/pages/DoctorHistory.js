@@ -2,6 +2,7 @@ import { Chip } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -162,6 +163,16 @@ const rows = [
 
 export default function DoctorHistory() {
   const [data, setData] = useState(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  console.log(id);
+
+  useEffect(() => {
+    if (id != localStorage.getItem("doctorId")) {
+      navigate("/un-authorized");
+    }
+  }, [id]);
 
   useEffect(() => {
     axios

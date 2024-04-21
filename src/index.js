@@ -17,6 +17,8 @@ import Vitals from "./pages/Vitals";
 import RequireAuth from "./pages/RequireAuth";
 import { AuthProvider } from "./pages/AuthProvider";
 import UnAuthorized from "./pages/UnAuthorized";
+import DoctorLogin from "./pages/Auth/DoctorLogin";
+import WelcomeDoctor from "./pages/WelcomeDoctor";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "doctor",
+    path: "doctor/:id",
     element: (
       <RequireAuth>
         <DoctorHistory />
@@ -72,6 +74,14 @@ const router = createBrowserRouter([
   {
     path: "signin",
     element: <SignIn />,
+  },
+  {
+    path: "doctor-login",
+    element: <DoctorLogin />,
+  },
+  {
+    path: "welcome-doctor",
+    element: <WelcomeDoctor />,
   },
   {
     path: "signup",

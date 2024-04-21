@@ -22,7 +22,7 @@ export default function UnAuthorized() {
 
       <h1>403 Forbidden</h1>
       <p>Access denied. You do not have permission to view this page.</p>
-      <button onClick={() => navigate("")}>Go Back</button>
+      <button onClick={() => navigate("/")}>Go Back</button>
     </div>
   );
 }
