@@ -129,3 +129,7 @@ code {
 .vitalcard-app:hover .vitalcard-graph::after {
   transform: scaleX(1);
 }
+
+.MuiFormControl-root {
+  width: 100%;
+}

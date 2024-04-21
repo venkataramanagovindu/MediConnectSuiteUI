@@ -1,12 +1,13 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
-import { Button } from "@mui/material";
+import { Button, Paper } from "@mui/material";
 import { LineChart } from "@mui/x-charts/LineChart";
 import { Chip } from "@mui/material";
 import Divider from "@mui/material/Divider";
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
   { field: "doctorName", headerName: "Doctor Name", width: 200 },
@@ -166,28 +167,7 @@ const rows = [
   },
 ];
 
-const metrics = [
-  {
-    logo: "haertbeat.png",
-    text: "Heart Rate",
-    metric: "80 Bpm",
-    color: "#e33232",
-  },
-  {
-    logo: "bloodpresure.png",
-    text: "Blood Pressure",
-    metric: "120/80 mmHG",
-    color: "#61D4CF",
-  },
-  {
-    logo: "glucose.png",
-    text: "Glucose Level",
-    metric: "60 - 80 mg/dl",
-    color: "#FF834C ",
-  },
-];
 export default function Appointments() {
-
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -205,20 +185,26 @@ export default function Appointments() {
       <h3>Appointments</h3>
       <div className="row">
         <div className="col-8">
-          <div className="card px-5 pt-3">
-            <div className="row">
-              <div className="col-8 d-flex flex-column justify-content-center">
-                <h3>Welcome Eshwar!</h3>
-                <span className="mb-4">
-                  Get your latest update for the last 7 days
-                </span>
-                <Button className="border w-50">Connect to Doctor!</Button>
-              </div>
-              <div className="col-4 d-flex  justify-content-end">
-                <img src="/assets/imgs/docback.png" width="200" height="200" />
+          <Paper>
+            <div className="px-5 pt-3">
+              <div className="row">
+                <div className="col-8 d-flex flex-column justify-content-center">
+                  <h3>Welcome Eshwar!</h3>
+                  <span className="mb-4">
+                    Get your latest update for the last 7 days
+                  </span>
+                  <Button className="border w-50">Connect to Doctor!</Button>
+                </div>
+                <div className="col-4 d-flex  justify-content-end">
+                  <img
+                    src="/assets/imgs/docback.png"
+                    width="200"
+                    height="200"
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          </Paper>
           <div className="my-3"></div>
           <div class="vitalcard-container" style={{ padding: 0 }}>
             <div class="vitalcard-app vitalcard-temperature">
@@ -247,32 +233,6 @@ export default function Appointments() {
               <div class="vitalcard-footer">Normal</div>
             </div>
           </div>
-          {/* <div className="d-flex gap-1">
-            {metrics.map((m) => (
-              <div
-                className="card d-flex flex-column col-4 border p-3"
-                style={{
-                  backgroundColor: m.color,
-                  // backgroundImage: `url(${process.env.PUBLIC_URL}/assets/imgs/dna.png)`,
-                  // backgroundRepeat: "no-repeat",
-                  // backgroundSize: "cover", // or a specific size like "100px 100px"
-                  // backgroundPosition: "center", // Adjust if needed
-                }}
-                key={m.text}
-              >
-                <span>
-                  <img
-                    src={`/assets/imgs/${m.logo}`}
-                    width={50}
-                    height={50}
-                    className="card"
-                  />
-                </span>
-                <strong>{m.text}</strong>
-                <small>{m.metric}</small>
-              </div>
-            ))}
-          </div> */}
         </div>
         <div className="col-4 border card">
           <div className="p-3">

@@ -1,7 +1,20 @@
-import { Chip } from "@mui/material";
+import { Button, Chip } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import SendIcon from "@mui/icons-material/Send";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider, DateTimePicker } from "@mui/x-date-pickers";
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -162,6 +175,25 @@ const rows = [
 
 export default function History() {
   const [data, setData] = useState(null);
+  const [rowSelectionModel, setRowSelectionModel] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
+
+  const [doctor, setDoctor] = useState("");
+  const [date, setDate] = useState();
+
+  const doctors = [
+    { id: 1, name: "Dr. Smith" },
+    { id: 2, name: "Dr. Johnson" },
+    { id: 3, name: "Dr. Williams" },
+  ];
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     axios
@@ -173,12 +205,34 @@ export default function History() {
       .catch((error) => {});
   }, []);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log({ doctor, date });
+    handleClose();
+  };
+
   return (
     <div>
-      <h3>History</h3>
+      <div className="d-flex justify-content-between mb-3">
+        <h3>History</h3>
+        <Button
+          endIcon={<SendIcon />}
+          variant="outlined"
+          disabled={!rowSelectionModel.length}
+          onClick={handleClickOpen}
+        >
+          Send Invite
+        </Button>
+      </div>
       <DataGrid
+        checkboxSelection
         rows={rows}
         columns={columns}
+        onRowSelectionModelChange={(newRowSelectionModel) => {
+          console.log(newRowSelectionModel);
+          setRowSelectionModel(newRowSelectionModel);
+        }}
+        rowSelectionModel={rowSelectionModel}
         initialState={{
           pagination: {
             paginationModel: {
@@ -188,6 +242,58 @@ export default function History() {
         }}
         pageSizeOptions={[10, 20, 30]}
       />
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          component: "form",
+          onSubmit: handleSubmit,
+        }}
+      >
+        <DialogTitle>Send Invite</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Select the doctor and expiry date and time to send the invite to the
+            doctor
+          </DialogContentText>
+          <div className="mb-3">
+            <FormControl fullWidth margin="dense">
+              <InputLabel id="doctor-select-label">Doctor</InputLabel>
+              <Select
+                labelId="doctor-select-label"
+                id="doctor-select"
+                value={doctor}
+                label="Doctor"
+                onChange={(e) => setDoctor(e.target.value)}
+                required
+              >
+                {doctors.map((doc) => (
+                  <MenuItem key={doc.id} value={doc.name}>
+                    {doc.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+          <div className="w-100">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateTimePicker
+                renderInput={(props) => (
+                  <TextField {...props} fullWidth margin="dense" />
+                )}
+                label="Date and Time"
+                value={date}
+                onChange={setDate}
+                required
+              />
+            </LocalizationProvider>
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button type="submit">Send Invite</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
