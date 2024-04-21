@@ -17,3 +17,92 @@ code {
   border-left: 7px solid #1976d2;
   padding-left: 5px;
 }
+
+
+.vitalcard-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.vitalcard {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.vitalcard:hover {
+  transform: translateY(-10px);
+}
+
+.vitalcard-header {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.vitalcard-main {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.vitalcard-footer {
+  font-size: 16px;
+  color: #666;
+}
+
+.vitalcard-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+/* Define colors for different cards */
+.vitalcard-spo2 {
+  color: #ff5f5f;
+}
+
+.vitalcard-heart-rate {
+  color: #33F6FF;
+}
+
+.vitalcard-breathing-rate {
+  color: #5f8cff;
+}
+
+.vitalcard-temperature {
+  color: #FCFF33;
+}
+.vitalcard-blood-pressure {
+  color: #36FF33;
+}
+/* Example graph line for visual */
+.vitalcard-graph {
+  height: 3px;
+  width: 100%;
+  background: #ddd;
+  margin: 10px 0;
+  position: relative;
+}
+
+.vitalcard-graph::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: currentColor; /* Use the text color for the graph line */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+}
+
+.vitalcard:hover .card-graph::after {
+  transform: scaleX(1);
+}

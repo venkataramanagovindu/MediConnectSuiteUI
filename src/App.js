@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <Header toggleSideNav={toggleSideNav} />
       <SideNav ref={sideNavRef} />
-      <div className="m-5">
+      <div className="m-3">
         <Outlet />
       </div>
     </div>

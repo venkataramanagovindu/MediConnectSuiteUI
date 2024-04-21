@@ -8,6 +8,7 @@ import SignIn from "./pages/Auth/SignIn";
 import Appointments from "./pages/Appointments";
 import History from "./pages/History";
 import SignUp from "./pages/Auth/SignUp";
+import Vitals from "./pages/Vitals";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "history",
         element: <History />,
+      },
+      {
+        path: "vitals",
+        element: <Vitals />,
       },
     ],
   },
