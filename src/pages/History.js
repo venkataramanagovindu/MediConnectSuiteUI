@@ -1,5 +1,7 @@
 import { Chip } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -159,6 +161,18 @@ const rows = [
 ];
 
 export default function History() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .then((response) => {
+        setData(response.data);
+        console.log(response);
+      })
+      .catch((error) => {});
+  }, []);
+
   return (
     <div>
       <h3>History</h3>
