@@ -207,7 +207,11 @@ export default function History() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log({ doctor, date });
+    const data = {
+      doctorId: doctor,
+      expiryDate: date.$d,
+      historyIds: [...rowSelectionModel],
+    };
     handleClose();
   };
 
@@ -268,7 +272,7 @@ export default function History() {
                 required
               >
                 {doctors.map((doc) => (
-                  <MenuItem key={doc.id} value={doc.name}>
+                  <MenuItem key={doc.id} value={doc.id}>
                     {doc.name}
                   </MenuItem>
                 ))}
