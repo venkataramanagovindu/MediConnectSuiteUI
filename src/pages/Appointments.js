@@ -8,7 +8,6 @@ import Divider from "@mui/material/Divider";
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
-  { field: "patientName", headerName: "Patient Name", width: 200 },
   { field: "doctorName", headerName: "Doctor Name", width: 200 },
   {
     field: "appointmentDate",
@@ -46,140 +45,120 @@ const columns = [
 const rows = [
   {
     id: 1,
-    patientName: "John Doe",
     doctorName: "Dr. Smith",
     appointmentDate: new Date("2024-04-25"),
     status: "Confirmed",
   },
   {
     id: 2,
-    patientName: "Jane Doe",
     doctorName: "Dr. Johnson",
     appointmentDate: new Date("2024-04-26"),
     status: "Pending",
   },
   {
     id: 3,
-    patientName: "Michael Johnson",
     doctorName: "Dr. Brown",
     appointmentDate: new Date("2024-04-27"),
     status: "Canceled",
   },
   {
     id: 4,
-    patientName: "Emily Wilson",
     doctorName: "Dr. White",
     appointmentDate: new Date("2024-04-28"),
     status: "Confirmed",
   },
   {
     id: 5,
-    patientName: "Sarah Davis",
     doctorName: "Dr. Green",
     appointmentDate: new Date("2024-04-29"),
     status: "Pending",
   },
   {
     id: 6,
-    patientName: "David Martinez",
     doctorName: "Dr. Black",
     appointmentDate: new Date("2024-04-30"),
     status: "Confirmed",
   },
   {
     id: 7,
-    patientName: "Linda Thompson",
     doctorName: "Dr. Gray",
     appointmentDate: new Date("2024-05-01"),
     status: "Pending",
   },
   {
     id: 8,
-    patientName: "Richard Rodriguez",
     doctorName: "Dr. Red",
     appointmentDate: new Date("2024-05-02"),
     status: "Canceled",
   },
   {
     id: 9,
-    patientName: "Susan Harris",
     doctorName: "Dr. Blue",
     appointmentDate: new Date("2024-05-03"),
     status: "Confirmed",
   },
   {
     id: 10,
-    patientName: "James Moore",
     doctorName: "Dr. Yellow",
     appointmentDate: new Date("2024-05-04"),
     status: "Pending",
   },
   {
     id: 11,
-    patientName: "Karen Clark",
     doctorName: "Dr. Purple",
     appointmentDate: new Date("2024-05-05"),
     status: "Confirmed",
   },
   {
     id: 12,
-    patientName: "Steven Scott",
     doctorName: "Dr. Orange",
     appointmentDate: new Date("2024-05-06"),
     status: "Pending",
   },
   {
     id: 13,
-    patientName: "Mary Lee",
     doctorName: "Dr. Pink",
     appointmentDate: new Date("2024-05-07"),
     status: "Canceled",
   },
   {
     id: 14,
-    patientName: "Daniel King",
     doctorName: "Dr. Brown",
     appointmentDate: new Date("2024-05-08"),
     status: "Confirmed",
   },
   {
     id: 15,
-    patientName: "Carol Evans",
     doctorName: "Dr. White",
     appointmentDate: new Date("2024-05-09"),
     status: "Pending",
   },
   {
     id: 16,
-    patientName: "Jason Allen",
     doctorName: "Dr. Green",
     appointmentDate: new Date("2024-05-10"),
     status: "Confirmed",
   },
   {
     id: 17,
-    patientName: "Patricia Baker",
     doctorName: "Dr. Black",
     appointmentDate: new Date("2024-05-11"),
     status: "Pending",
   },
   {
     id: 18,
-    patientName: "Eric Carter",
     doctorName: "Dr. Gray",
     appointmentDate: new Date("2024-05-12"),
     status: "Canceled",
   },
   {
     id: 19,
-    patientName: "Jessica Adams",
     doctorName: "Dr. Red",
     appointmentDate: new Date("2024-05-13"),
     status: "Confirmed",
   },
   {
     id: 20,
-    patientName: "Matthew Gonzalez",
     doctorName: "Dr. Blue",
     appointmentDate: new Date("2024-05-14"),
     status: "Pending",
@@ -191,7 +170,7 @@ const metrics = [
     logo: "haertbeat.png",
     text: "Heart Rate",
     metric: "80 Bpm",
-    color: "#FFCB39",
+    color: "#e33232",
   },
   {
     logo: "bloodpresure.png",
@@ -227,7 +206,34 @@ export default function Appointments() {
             </div>
           </div>
           <div className="my-3"></div>
-          <div className="d-flex gap-1">
+          <div class="vitalcard-container" style={{ padding: 0 }}>
+            <div class="vitalcard-app vitalcard-temperature">
+              <img src="/assets/imgs/tempremov.png" width={50} height={50} />
+              <div class="vitalcard-header">Temperature</div>
+              <div class="vitalcard-main">98 ° F</div>
+              <div class="vitalcard-graph"></div>
+              <div class="vitalcard-footer">Normal</div>
+            </div>
+            <div class="vitalcard-app vitalcard-spo2">
+              <img src="/assets/imgs/ssssss.png" width={50} height={50} />
+              <div class="vitalcard-header">SpO2</div>
+              <div class="vitalcard-main">96%</div>
+              <div class="vitalcard-graph"></div>
+              <div class="vitalcard-footer">Normal</div>
+            </div>
+            <div class="vitalcard-app vitalcard-heart-rate">
+              <img
+                src="/assets/imgs/haertbeatremoved.png"
+                width={50}
+                height={50}
+              />
+              <div class="vitalcard-header">Heart Rate</div>
+              <div class="vitalcard-main">72 bpm</div>
+              <div class="vitalcard-graph"></div>
+              <div class="vitalcard-footer">Normal</div>
+            </div>
+          </div>
+          {/* <div className="d-flex gap-1">
             {metrics.map((m) => (
               <div
                 className="card d-flex flex-column col-4 border p-3"
@@ -252,7 +258,7 @@ export default function Appointments() {
                 <small>{m.metric}</small>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
         <div className="col-4 border card">
           <div className="p-3">
@@ -291,7 +297,7 @@ export default function Appointments() {
         <div className="col-6">
           <div className="card p-3 ">
             <h3 className="header">Hear rate over the week</h3>
-            <div style={{ height: "500px" }}>
+            <div style={{ height: "630px" }}>
               <LineChart
                 xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
                 series={[
