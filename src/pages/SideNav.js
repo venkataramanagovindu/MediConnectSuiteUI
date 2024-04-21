@@ -14,6 +14,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import HistoryIcon from "@mui/icons-material/History";
 import { Link } from "react-router-dom";
+import Drawer from "@mui/material/Drawer";
 
 const navItems = [
   {
@@ -71,14 +72,14 @@ const SideNav = React.forwardRef((props, ref) => {
   };
 
   return (
-    <SwipeableDrawer
+    <Drawer
       anchor="left"
       open={isDrawerOpened}
       onClose={toggleDrawer(false)}
       onOpen={toggleDrawer(false)}
     >
       {list()}
-    </SwipeableDrawer>
+    </Drawer>
   );
 });
 

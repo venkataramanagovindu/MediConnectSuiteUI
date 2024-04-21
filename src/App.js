@@ -1,28 +1,30 @@
 import "./App.css";
-import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/300.css"; // Import Roboto font weights
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import Header from "./pages/Header";
-import SideNav from "./pages/SideNav";
-import { useRef, useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import PersistentDrawerLeft from "./pages/Header.js"; // Import the new combined component
+import { ThemeProvider, createTheme } from "@mui/material/styles"; // Add MUI ThemeProvider if necessary
 
 function App() {
-  const sideNavRef = useRef(null);
-  const [toggleSideNav, setToggleSideNav] = useState();
-  useEffect(() => {
-    setToggleSideNav(sideNavRef.current.toggleDrawer);
-  }, []);
+  // You can also customize your theme settings here if needed
+  // const theme = createTheme({
+  //   palette: {
+  //     primary: {
+  //       main: "#556cd6",
+  //     },
+  //     secondary: {
+  //       main: "#19857b",
+  //     },
+  //   },
+  // });
 
   return (
+    // <ThemeProvider theme={theme}>
     <div className="App">
-      <Header toggleSideNav={toggleSideNav} />
-      <SideNav ref={sideNavRef} />
-      <div className="m-3">
-        <Outlet />
-      </div>
+      <PersistentDrawerLeft />
     </div>
+    // </ThemeProvider>
   );
 }
 
