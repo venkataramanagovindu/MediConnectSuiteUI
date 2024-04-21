@@ -5,8 +5,23 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeviceThermostatIcon from "@mui/icons-material/DeviceThermostat";
 import MonitorHeartIcon from "@mui/icons-material/MonitorHeart";
 import { Chip } from "@mui/material";
+import  { useState, useEffect } from "react";
+import axios from "axios";
 
 function Vitals() {
+
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .then((response) => {
+        setData(response.data);
+        console.log(response);
+      })
+      .catch((error) => {});
+  }, []);
+
   // Sample data for demonstration
   const basicVital = [
     { id: 1, type: "Temperature", data: "97" },
@@ -57,12 +72,7 @@ function Vitals() {
       docType: "PDF",
     },
   ];
-  //   function HealthRecordPage() {
-  //     const handleViewDocument = (row) => {
-  //       // Handle the view document action here
-  //       console.log('View document', row);
-  //     };
-  // }
+ 
   const columns = [
     { field: "id", headerName: "S.No", width: 90 },
     {
@@ -215,6 +225,7 @@ function Vitals() {
   ];
 
   return (
+
     <div>
       <h3>Health Records</h3>
       <div class="vitalcard-container">

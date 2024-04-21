@@ -5,7 +5,8 @@ import { Button } from "@mui/material";
 import { LineChart } from "@mui/x-charts/LineChart";
 import { Chip } from "@mui/material";
 import Divider from "@mui/material/Divider";
-
+import  { useState, useEffect } from "react";
+import axios from "axios";
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
   { field: "doctorName", headerName: "Doctor Name", width: 200 },
@@ -186,6 +187,19 @@ const metrics = [
   },
 ];
 export default function Appointments() {
+
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .then((response) => {
+        setData(response.data);
+        console.log(response);
+      })
+      .catch((error) => {});
+  }, []);
+
   return (
     <div>
       <h3>Appointments</h3>
