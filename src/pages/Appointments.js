@@ -269,13 +269,13 @@ export default function Appointments() {
       <div className="row">
         <div className="col-6">
           <div className="card p-3 ">
-            <h3 className="header">Hear rate over the week</h3>
+            <h3 className="header">Heart rate over the week</h3>
             <div style={{ height: "630px" }}>
               <LineChart
-                xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+                xAxis={[{ data: [70, 80, 90, 100, 110, 120] }]}
                 series={[
                   {
-                    data: [2, 5.5, 2, 8.5, 1.5, 5],
+                    data: [70, 73, 76, 68, 63, 69],
                   },
                 ]}
               />
