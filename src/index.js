@@ -16,6 +16,7 @@ import DoctorHistory from "./pages/DoctorHistory";
 import Vitals from "./pages/Vitals";
 import RequireAuth from "./pages/RequireAuth";
 import { AuthProvider } from "./pages/AuthProvider";
+import UnAuthorized from "./pages/UnAuthorized";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,14 @@ const router = createBrowserRouter([
     element: (
       <RequireAuth>
         <DoctorHistory />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "un-authorized",
+    element: (
+      <RequireAuth>
+        <UnAuthorized />
       </RequireAuth>
     ),
   },
