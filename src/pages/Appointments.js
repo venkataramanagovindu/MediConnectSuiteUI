@@ -238,6 +238,7 @@ export default function Appointments() {
                   // backgroundSize: "cover", // or a specific size like "100px 100px"
                   // backgroundPosition: "center", // Adjust if needed
                 }}
+                key={m.text}
               >
                 <span>
                   <img

@@ -13,7 +13,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import HistoryIcon from "@mui/icons-material/History";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const navItems = [
   {
@@ -40,22 +40,26 @@ const SideNav = React.forwardRef((props, ref) => {
     <Box
       sx={{ width: 250 }}
       role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
+      onClick={() => toggleDrawer(false)}
+      onKeyDown={() => toggleDrawer(false)}
     >
       <List>
         {navItems.map((navItem, index) => (
-          <ListItem key={navItem} disablePadding>
-            <ListItemButton>
-              {/* <Link to={navItem.link}> */}
-              <ListItemIcon>
-                {navItem.name == "Appointments" && <CalendarMonthIcon />}
-                {navItem.name == "Vitals" && <HealthAndSafetyIcon />}
-                {navItem.name == "History" && <HistoryIcon />}
-              </ListItemIcon>
-              <ListItemText primary={navItem.name} />
-              {/* </Link> */}
-            </ListItemButton>
+          <ListItem key={navItem.name} disablePadding>
+            <Link
+              onClick={() => toggleDrawer(false)}
+              to={navItem.link}
+              style={{ textDecoration: "none", color: "none" }}
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  {navItem.name == "Appointments" && <CalendarMonthIcon />}
+                  {navItem.name == "Vitals" && <HealthAndSafetyIcon />}
+                  {navItem.name == "History" && <HistoryIcon />}
+                </ListItemIcon>
+                <ListItemText primary={navItem.name} />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -63,16 +67,7 @@ const SideNav = React.forwardRef((props, ref) => {
   );
 
   const toggleDrawer = (open) => (open) => {
-    // if (
-    //   event &&
-    //   event.type === "keydown" &&
-    //   (event.key === "Tab" || event.key === "Shift")
-    // ) {
-    //   return;
-    // }
-    // console.log(open);
     setIsDrawerOpened(open);
-    // console.log(open);
   };
 
   return (
