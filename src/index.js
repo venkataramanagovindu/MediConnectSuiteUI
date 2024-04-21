@@ -12,6 +12,7 @@ import SignIn from "./pages/Auth/SignIn";
 import Appointments from "./pages/Appointments";
 import History from "./pages/History";
 import SignUp from "./pages/Auth/SignUp";
+import DoctorHistory from "./pages/DoctorHistory";
 import Vitals from "./pages/Vitals";
 import RequireAuth from "./pages/RequireAuth";
 import { AuthProvider } from "./pages/AuthProvider";
@@ -50,6 +51,14 @@ const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "doctor",
+    element: (
+      <RequireAuth>
+        <DoctorHistory />
+      </RequireAuth>
+    ),
   },
   {
     path: "signin",
