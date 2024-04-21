@@ -3,34 +3,56 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  Navigate,
+} from "react-router-dom";
 import SignIn from "./pages/Auth/SignIn";
 import Appointments from "./pages/Appointments";
 import History from "./pages/History";
 import SignUp from "./pages/Auth/SignUp";
 import Vitals from "./pages/Vitals";
+import RequireAuth from "./pages/RequireAuth";
+import { AuthProvider } from "./pages/AuthProvider";
 
 const router = createBrowserRouter([
   {
-    path: "",
+    path: "/",
     element: <App />,
     children: [
       {
+        index: true,
+        element: <Navigate to="/appointments" replace />, // Redirect from "/" to "/appointments"
+      },
+      {
         path: "appointments",
-        element: <Appointments />,
+        element: (
+          <RequireAuth>
+            <Appointments />
+          </RequireAuth>
+        ),
       },
       {
         path: "history",
-        element: <History />,
+        element: (
+          <RequireAuth>
+            <History />
+          </RequireAuth>
+        ),
       },
       {
         path: "vitals",
-        element: <Vitals />,
+        element: (
+          <RequireAuth>
+            <Vitals />
+          </RequireAuth>
+        ),
       },
     ],
   },
   {
-    path: "sigin",
+    path: "signin",
     element: <SignIn />,
   },
   {
@@ -42,7 +64,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
 

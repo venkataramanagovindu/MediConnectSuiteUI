@@ -1,5 +1,4 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button, Paper } from "@mui/material";
 import { LineChart } from "@mui/x-charts/LineChart";

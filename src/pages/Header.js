@@ -23,13 +23,14 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import { alpha } from "@mui/material/styles";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import HistoryIcon from "@mui/icons-material/History";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import { useAuth } from "./AuthProvider"; // make sure the path is correct
 
 const navItems = [
   {
@@ -136,6 +137,8 @@ export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const healthId = "634558";
+  const { logout } = useAuth();
+  const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -188,6 +191,14 @@ export default function PersistentDrawerLeft() {
       <MenuItem onClick={handleMenuClose}>My Health ID: {healthId}</MenuItem>
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem
+        onClick={() => {
+          logout();
+          navigate("/signin");
+        }}
+      >
+        Logout
+      </MenuItem>
     </Menu>
   );
 
