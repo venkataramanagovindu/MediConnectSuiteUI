@@ -169,7 +169,16 @@ export default function DoctorHistory() {
   console.log(id);
 
   useEffect(() => {
-    if (id != localStorage.getItem("doctorId")) {
+    const expiryDate = new Date(JSON.parse(localStorage.getItem("expiryDate")));
+    console.log(
+      expiryDate.getTime(),
+      new Date().getTime(),
+      localStorage.getItem("expiryDate")
+    );
+    if (
+      id != localStorage.getItem("doctorId") ||
+      expiryDate.getTime() <= new Date().getTime()
+    ) {
       navigate("/un-authorized");
     }
   }, [id]);

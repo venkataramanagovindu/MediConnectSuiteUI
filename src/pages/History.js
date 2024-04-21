@@ -261,6 +261,8 @@ export default function History() {
       expiryDate: date.$d,
       historyIds: [...rowSelectionModel],
     };
+
+    localStorage.setItem("expiryDate", JSON.stringify(date.$d));
     handleClose();
   };
 
