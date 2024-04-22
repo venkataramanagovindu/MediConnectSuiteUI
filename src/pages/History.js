@@ -117,7 +117,7 @@ const rows = [
     appointmentDate: "2024-04-05",
     treatment: "Orthopedic Consultation",
     diagnosis: "Arthritis",
-    nextAppointment: "2024-05-05",
+    nextAppointment: "2024-04-27",
     notes: "Discuss surgical options",
     status: "Canceled",
   },
@@ -230,6 +230,10 @@ export default function History() {
   const [doctor, setDoctor] = useState("");
   const [date, setDate] = useState();
 
+  useEffect(() => {
+    localStorage.removeItem("expiryDate");
+  }, []);
+
   const doctors = [
     { id: 1, name: "Dr. Smith" },
     { id: 2, name: "Dr. Johnson" },
@@ -242,6 +246,7 @@ export default function History() {
 
   const handleClose = () => {
     setOpen(false);
+    alert("Invite Sent Successfully!");
   };
 
   useEffect(() => {
@@ -336,7 +341,7 @@ export default function History() {
                 renderInput={(props) => (
                   <TextField {...props} fullWidth margin="dense" />
                 )}
-                label="Date and Time"
+                label="Expiry Date and Time"
                 value={date}
                 onChange={setDate}
                 required

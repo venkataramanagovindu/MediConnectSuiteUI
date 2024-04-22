@@ -20,6 +20,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     localStorage.removeItem("cred");
+    // localStorage.removeItem("expiryDate");
   };
 
   return (
